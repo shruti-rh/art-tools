@@ -32,12 +32,7 @@ def parse_k8s_lock_path(lock_path: str) -> Optional[Tuple[str, str]]:
             return None
 
         namespace = parts[0]
-        api_version = parts[1]
         resource_name = parts[2]
-
-        # Only accept PipelineRun resources for now
-        if api_version != 'tekton.dev~v1~PipelineRun':
-            return None
 
         return (namespace, resource_name)
     except Exception as e:

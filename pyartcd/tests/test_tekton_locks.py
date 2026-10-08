@@ -29,14 +29,6 @@ def test_parse_k8s_lock_path_malformed():
     assert result is None
 
 
-def test_parse_k8s_lock_path_unsupported_resource_type():
-    """Test parsing fails for non-PipelineRun resource types"""
-    lock_path = 'k8s/ns/art-quay-tenant/tekton.dev~v1~TaskRun/task-abc'
-    result = parse_k8s_lock_path(lock_path)
-
-    assert result is None
-
-
 def test_is_pipelinerun_active_running():
     """Test active running PipelineRun"""
     with patch('pyartcd.tekton_locks.config.load_kube_config'):
